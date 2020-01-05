@@ -1,0 +1,13 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+.text-7xl {
+  font-size: 7rem;
+}
+
+.h-half {
+  height: 50vh;
+}
