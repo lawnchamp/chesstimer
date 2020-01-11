@@ -34,13 +34,26 @@ function Clock({ isTicking, toggleTicker }) {
   return <ClockDisplay time={time} isTicking={isTicking} toggleTicker={toggleTicker} />;
 }
 
+function PauseButton({ toggle, text }) {
+  return (
+    <div
+      onClick={toggle}
+      class="rounded-lg text-center bg-grey-100 mx-6 my-2 uppercase tracking-wider font-semibold text-sm text-gray-700"
+    >
+      {text}
+    </div>
+  );
+}
+
 function App() {
   const [isTicking, setIsTicking] = useState(true);
+  const [paused, setPaused] = useState(true);
 
   return (
-      <Clock isTicking={isTicking} toggleTicker={() => setIsTicking(!isTicking)} />
-      <Clock isTicking={!isTicking} toggleTicker={() => setIsTicking(!isTicking)} />
     <div className="App h-screen flex flex-col justify-center bg-gray-100">
+      <Clock isTicking={isTicking && !paused} toggleTicker={() => setIsTicking(!isTicking)} />
+      <PauseButton toggle={() => setPaused(!paused)} text={paused ? 'play' : 'pause'} />
+      <Clock isTicking={!isTicking && !paused} toggleTicker={() => setIsTicking(!isTicking)} />
     </div>
   );
 }
