@@ -4,15 +4,15 @@ function ClockDisplay({ isTicking, time, toggleTicker }) {
   const minutes = Math.floor(time / 60);
   const seconds = (time % 60).toString().padStart(2, '0');
 
-  const containerStyles = isTicking ? 'shadow-2xl bg-green-900' : 'bg-white';
-  const timerStyles = isTicking ? 'text-gray-100' : 'text-gray-300';
+  const containerStyles = isTicking ? 'shadow-2xl bg-gray-300 border border-gray-700' : 'bg-white';
+  const timerStyles = isTicking ? 'text-gray-700' : 'text-gray-100';
 
   return (
     <div
       onClick={() => isTicking && toggleTicker()}
-      className={`block h-half text-center bg-white ${containerStyles}`}
+      className={`rounded-lg text-center bg-grey-100 mx-6 my-2 ${containerStyles}`}
     >
-      <div className={`text-7xl text-gray-300 py-20 md:py-48 ${timerStyles}`}>
+      <div className={`text-7xl text-gray-300 py-12 sm:py-24 ${timerStyles}`}>
         <div>
           {minutes}:{seconds}
         </div>
