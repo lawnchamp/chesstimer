@@ -38,9 +38,9 @@ function App() {
   const [isTicking, setIsTicking] = useState(true);
 
   return (
-    <div className="App h-screen">
       <Clock isTicking={isTicking} toggleTicker={() => setIsTicking(!isTicking)} />
       <Clock isTicking={!isTicking} toggleTicker={() => setIsTicking(!isTicking)} />
+    <div className="App h-screen flex flex-col justify-center bg-gray-100">
     </div>
   );
 }
