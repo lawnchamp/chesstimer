@@ -12,7 +12,7 @@ function ClockDisplay({ isTicking, time, toggleTicker }) {
   return (
     <div
       onClick={() => isTicking && toggleTicker()}
-      className={`rounded-lg text-center bg-grey-100 mx-6 my-2 ${containerStyles}`}
+      className={`rounded-lg text-center bg-grey-100 my-2 ${containerStyles}`}
     >
       <div className={`text-7xl text-gray-300 py-12 sm:py-24 ${timerStyles}`}>
         <div>
@@ -40,10 +40,33 @@ function PauseButton({ toggle, text }) {
   return (
     <div
       onClick={toggle}
-      class="rounded-lg text-center bg-grey-100 mx-6 my-2 uppercase tracking-wider font-semibold text-sm text-gray-700"
+      class="rounded-lg text-center bg-grey-100 my-2 uppercase tracking-wider font-semibold text-sm text-gray-700"
     >
       {text}
     </div>
+  );
+}
+
+function Tab({ active, text }) {
+  const activeClasses = active
+    ? 'border-gray-500 bg-gray-100 border-l border-t border-r text-blue-700'
+    : 'bg-gray-300 text-blue-500 hover:text-blue-800';
+  return (
+    <li className={`mr-1 ${active ? '-mb-px' : ''}`}>
+      <a class={`inline-block rounded-t py-2 px-4 font-semibold ${activeClasses}`} href="#">
+        {text}
+      </a>
+    </li>
+  );
+}
+
+function NavBar({ headers }) {
+  return (
+    <ul class="flex border-b border-gray-500 mb-2">
+      <Tab active={false} text="Setup" />
+      <Tab active={true} text="Play" />
+      <Tab active={false} text="About" />
+    </ul>
   );
 }
 
@@ -52,10 +75,13 @@ function App() {
   const [paused, setPaused] = useState(true);
 
   return (
-    <div className="App h-screen flex flex-col justify-center bg-gray-100">
-      <Clock isTicking={isTicking && !paused} toggleTicker={() => setIsTicking(!isTicking)} />
-      <PauseButton toggle={() => setPaused(!paused)} text={paused ? 'play' : 'pause'} />
-      <Clock isTicking={!isTicking && !paused} toggleTicker={() => setIsTicking(!isTicking)} />
+    <div className="App bg-gray-100">
+      <div className="px-6 h-screen flex flex-col justify-center">
+        <NavBar />
+        <Clock isTicking={isTicking && !paused} toggleTicker={() => setIsTicking(!isTicking)} />
+        <PauseButton toggle={() => setPaused(!paused)} text={paused ? 'play' : 'pause'} />
+        <Clock isTicking={!isTicking && !paused} toggleTicker={() => setIsTicking(!isTicking)} />
+      </div>
     </div>
   );
 }
