@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 
 function ClockDisplay({ isTicking, time, toggleTicker }) {
   const minutes = Math.floor(time / 60);
@@ -36,6 +36,19 @@ function Clock({ isTicking, toggleTicker }) {
   return <ClockDisplay time={time} isTicking={isTicking} toggleTicker={toggleTicker} />;
 }
 
+function ChessTimer() {
+  const [isTicking, setIsTicking] = useState(true);
+  const [paused, setPaused] = useState(true);
+
+  return (
+    <Fragment>
+      <Clock isTicking={isTicking && !paused} toggleTicker={() => setIsTicking(!isTicking)} />
+      <PauseButton toggle={() => setPaused(!paused)} text={paused ? 'play' : 'pause'} />
+      <Clock isTicking={!isTicking && !paused} toggleTicker={() => setIsTicking(!isTicking)} />
+    </Fragment>
+  );
+}
+
 function PauseButton({ toggle, text }) {
   return (
     <div
@@ -60,7 +73,7 @@ function Tab({ active, text }) {
   );
 }
 
-function NavBar({ headers }) {
+function NavBar() {
   return (
     <ul class="flex border-b border-gray-500 mb-2">
       <Tab active={false} text="Setup" />
@@ -71,16 +84,11 @@ function NavBar({ headers }) {
 }
 
 function App() {
-  const [isTicking, setIsTicking] = useState(true);
-  const [paused, setPaused] = useState(true);
-
   return (
     <div className="App bg-gray-100">
       <div className="px-6 h-screen flex flex-col justify-center">
         <NavBar />
-        <Clock isTicking={isTicking && !paused} toggleTicker={() => setIsTicking(!isTicking)} />
-        <PauseButton toggle={() => setPaused(!paused)} text={paused ? 'play' : 'pause'} />
-        <Clock isTicking={!isTicking && !paused} toggleTicker={() => setIsTicking(!isTicking)} />
+        <ChessTimer />
       </div>
     </div>
   );
