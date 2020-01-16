@@ -1,12 +1,13 @@
 import React, { useState, useEffect, Fragment } from 'react';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { About } from './about';
+// import { Image } from 'cloudinary-react';
 
 function ClockDisplay({ isTicking, time, toggleTicker }) {
   const minutes = Math.floor(time / 60);
   const seconds = (time % 60).toString().padStart(2, '0');
 
-  const containerStyles = isTicking
-    ? 'shadow-2xl bg-gray-300 border border-gray-700'
-    : 'bg-white border border-white';
+  const containerStyles = isTicking ? 'shadow-2xl bg-gray-300 border border-gray-700' : 'bg-white';
   const timerStyles = isTicking ? 'text-gray-700' : 'text-gray-100';
 
   return (
@@ -23,7 +24,7 @@ function ClockDisplay({ isTicking, time, toggleTicker }) {
   );
 }
 
-function Clock({ isTicking, toggleTicker }) {
+function Clock({ isTicking, toggleTicker, className }) {
   const [time, setTime] = useState(600);
 
   useEffect(() => {
@@ -33,7 +34,7 @@ function Clock({ isTicking, toggleTicker }) {
     }
   });
 
-  return <ClockDisplay time={time} isTicking={isTicking} toggleTicker={toggleTicker} />;
+  return <ClockDisplay time={time} {...{ isTicking, toggleTicker, className }} />;
 }
 
 function ChessTimer() {
@@ -42,7 +43,11 @@ function ChessTimer() {
 
   return (
     <Fragment>
-      <Clock isTicking={isTicking && !paused} toggleTicker={() => setIsTicking(!isTicking)} />
+      <Clock
+        isTicking={isTicking && !paused}
+        toggleTicker={() => setIsTicking(!isTicking)}
+        c="pt-6"
+      />
       <PauseButton toggle={() => setPaused(!paused)} text={paused ? 'play' : 'pause'} />
       <Clock isTicking={!isTicking && !paused} toggleTicker={() => setIsTicking(!isTicking)} />
     </Fragment>
@@ -53,43 +58,66 @@ function PauseButton({ toggle, text }) {
   return (
     <div
       onClick={toggle}
-      class="rounded-lg text-center bg-grey-100 my-2 uppercase tracking-wider font-semibold text-sm text-gray-700"
+      className="text-center my-2 uppercase tracking-wider font-semibold text-sm text-gray-700"
     >
       {text}
     </div>
   );
 }
 
-function Tab({ active, text }) {
+function Tab({ active, children, onClick }) {
   const activeClasses = active
     ? 'border-gray-500 bg-gray-100 border-l border-t border-r text-blue-700'
     : 'bg-gray-300 text-blue-500 hover:text-blue-800';
   return (
-    <li className={`mr-1 ${active ? '-mb-px' : ''}`}>
-      <a class={`inline-block rounded-t py-2 px-4 font-semibold ${activeClasses}`} href="#">
-        {text}
-      </a>
+    <li className={`mr-1 ${active ? '-mb-px' : ''}`} onClick={onClick}>
+      <div className={`inline-block rounded-t py-2 px-4 font-semibold ${activeClasses}`} href="#">
+        {children}
+      </div>
     </li>
   );
 }
 
-function NavBar() {
-  return (
-    <ul class="flex border-b border-gray-500 mb-2">
-      <Tab active={false} text="Setup" />
-      <Tab active={true} text="Play" />
-      <Tab active={false} text="About" />
-    </ul>
-  );
+function Setup() {
+  return <h2 className="my-2 font-semibold text-2xl text-gray-700">Coming soon!</h2>;
 }
 
 function App() {
+  const [activeTab, setActiveTab] = useState(window.location.hash);
+
   return (
-    <div className="App bg-gray-100">
-      <div className="px-6 h-screen flex flex-col justify-center">
-        <NavBar />
-        <ChessTimer />
-      </div>
+    <div className="App bg-gray-100 px-6 h-screen">
+      <header className="py-6 max-w-xl mx-auto">
+        <Router>
+          <div>
+            <nav>
+              <ul className="flex border-b border-gray-500 mb-2">
+                <Tab onClick={() => setActiveTab('/setup')} active={activeTab === '/setup'}>
+                  <Link to="/setup">Setup</Link>
+                </Tab>
+                <Tab onClick={() => setActiveTab('/')} active={activeTab === '/'}>
+                  <Link to="/">Play</Link>
+                </Tab>
+                <Tab onClick={() => setActiveTab('/about')} active={activeTab === '/about'}>
+                  <Link to="/about">About</Link>
+                </Tab>
+              </ul>
+            </nav>
+
+            <Switch>
+              <Route path="/setup">
+                <Setup />
+              </Route>
+              <Route path="/about">
+                <About />
+              </Route>
+              <Route path="/">
+                <ChessTimer />
+              </Route>
+            </Switch>
+          </div>
+        </Router>
+      </header>
     </div>
   );
 }
