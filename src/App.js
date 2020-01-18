@@ -12,13 +12,11 @@ function ClockDisplay({ isTicking, time, toggleTicker }) {
 
   return (
     <div
-      onClick={() => isTicking && toggleTicker()}
-      className={`rounded-lg text-center bg-grey-100 my-2 ${containerStyles}`}
+      onClick={() => isTicking && time > 0 && toggleTicker()}
+      className={`rounded-lg text-center my-2 ${containerStyles}`}
     >
-      <div className={`text-7xl text-gray-300 py-12 sm:py-24 ${timerStyles}`}>
-        <div>
-          {minutes}:{seconds}
-        </div>
+      <div className={`text-7xl py-12 sm:py-24 ${timerStyles}`}>
+        {minutes}:{seconds}
       </div>
     </div>
   );
@@ -28,7 +26,7 @@ function Clock({ isTicking, toggleTicker, className }) {
   const [time, setTime] = useState(600);
 
   useEffect(() => {
-    if (isTicking) {
+    if (isTicking && time > 0) {
       const timeout = setTimeout(() => setTime(time - 1), 1000);
       return () => clearTimeout(timeout);
     }
