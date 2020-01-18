@@ -81,20 +81,20 @@ function Setup() {
 }
 
 function App() {
-  const [activeTab, setActiveTab] = useState('play');
+  const [activeTab, setActiveTab] = useState(window.location.hash);
 
   return (
     <div className="App bg-gray-100 px-6 h-screen">
       <header className="py-6 max-w-xl mx-auto">
         <nav className="navbar navbar-light">
           <ul className="flex border-b border-gray-500 mb-2">
-            <Tab onClick={() => setActiveTab('setup')} active={activeTab === 'setup'}>
+            <Tab onClick={() => setActiveTab('#/setup')} active={activeTab === '#/setup'}>
               <Link to="/setup">Setup</Link>
             </Tab>
-            <Tab onClick={() => setActiveTab('play')} active={activeTab === 'play'}>
+            <Tab onClick={() => setActiveTab('#/')} active={activeTab === '#/'}>
               <Link to="/">Play</Link>
             </Tab>
-            <Tab onClick={() => setActiveTab('about')} active={activeTab === 'about'}>
+            <Tab onClick={() => setActiveTab('#/about')} active={activeTab === '#/about'}>
               <Link to="/about">About</Link>
             </Tab>
           </ul>
