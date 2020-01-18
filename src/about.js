@@ -4,7 +4,7 @@ export function About() {
   return (
     <div className="bg-white rounded overflow-hidden shadow-lg">
       <img
-        src="https://res.cloudinary.com/onlinechesstimer/image/upload/v1579141197/IMG_5442_ivtj7c.jpg"
+        src="https://res.cloudinary.com/onlinechesstimer/image/upload/v1579381863/smaller_miles_and_i_adqywo.png"
         alt="My son and I in the mountains"
       />
       {/* <Image
