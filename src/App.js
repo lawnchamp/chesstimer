@@ -16,9 +16,9 @@ function ClockDisplay({ isTicking, time, toggleTicker }) {
       className={`rounded-lg text-center my-2 ${containerStyles}`}
     >
       <div className={`text-7xl py-12 sm:py-24 ${timerStyles}`}>
-          {minutes}:{seconds}
-        </div>
+        {minutes}:{seconds}
       </div>
+    </div>
   );
 }
 
@@ -52,7 +52,7 @@ function PauseButton({ toggle, text }) {
   return (
     <div
       onClick={toggle}
-      class="rounded-lg text-center bg-grey-100 my-2 uppercase tracking-wider font-semibold text-sm text-gray-700"
+      className="text-center my-2 uppercase tracking-wider font-semibold text-sm text-gray-700"
     >
       {text}
     </div>
