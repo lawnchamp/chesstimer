@@ -36,7 +36,7 @@ function PauseButton({ toggle, text }) {
   return (
     <div
       onClick={toggle}
-      className="text-center my-2 uppercase tracking-wider font-semibold text-sm text-gray-700"
+      className="text-center my-4 uppercase tracking-wider font-semibold text-sm text-gray-700"
     >
       {text}
     </div>
