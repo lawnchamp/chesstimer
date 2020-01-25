@@ -1,6 +1,13 @@
 import React, { useState, Fragment, useEffect } from 'react';
 
 function ClockDisplay({ isTicking, time, toggleTicker }) {
+  const [rotation, setRotation] = useState(0);
+
+  function onRotationClicked(event) {
+    event.stopPropagation();
+    setRotation(rotation + 45);
+  }
+
   const minutes = Math.floor(time / 60);
   const seconds = (time % 60).toString().padStart(2, '0');
 
@@ -10,9 +17,18 @@ function ClockDisplay({ isTicking, time, toggleTicker }) {
   return (
     <div
       onClick={() => isTicking && time > 0 && toggleTicker()}
-      className={`rounded-lg text-center my-2 ${containerStyles}`}
+      className={`relative rounded-lg h-half flex justify-center items-center ${containerStyles}`}
     >
-      <div className={`text-7xl py-12 sm:py-24 ${timerStyles}`}>
+      <svg
+        className={`${timerStyles} h-8 w-8 hover:text-black absolute top-0 right-0 m-2`}
+        onClick={onRotationClicked}
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 20 20"
+      >
+        <path d="M15 17v-2.99A4 4 0 0 0 11 10H8v5L2 9l6-6v5h3a6 6 0 0 1 6 6v3h-2z" />
+      </svg>
+      <div className={`text-8xl ${timerStyles}`} style={{ transform: `rotate(${rotation}deg)` }}>
         {minutes}:{seconds}
       </div>
     </div>

@@ -4,7 +4,7 @@ import App from './App';
 import './styles/tailwind.css';
 import * as serviceWorker from './serviceWorker';
 
-import { BrowserRouter, HashRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 
 ReactDOM.render(
   <HashRouter>
