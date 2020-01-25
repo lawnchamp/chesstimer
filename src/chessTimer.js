@@ -5,7 +5,7 @@ function ClockDisplay({ isTicking, time, toggleTicker }) {
   const seconds = (time % 60).toString().padStart(2, '0');
 
   const containerStyles = isTicking ? 'shadow-2xl bg-gray-300 border border-gray-700' : 'bg-white';
-  const timerStyles = isTicking ? 'text-gray-700' : 'text-gray-100';
+  const timerStyles = isTicking ? 'text-gray-700' : 'text-gray-300';
 
   return (
     <div
