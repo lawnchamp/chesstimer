@@ -11387,12 +11387,12 @@ video {
   z-index: auto;
 }
 
-.text-7xl {
-  font-size: 7rem;
+.text-8xl {
+  font-size: 6rem;
 }
 
 .h-half {
-  height: 50vh;
+  height: 40vh;
 }
 
 @media (min-width: 640px) {

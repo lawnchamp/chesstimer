@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link, Route } from 'react-router-dom';
 import { About } from './about';
 import { ChessTimer } from './chessTimer';
-// import { Image } from 'cloudinary-react';
 
 function Tab({ active, children, onClick }) {
   const activeClasses = active
