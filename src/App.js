@@ -28,15 +28,21 @@ function App() {
       <header className="py-6 max-w-xl mx-auto">
         <nav className="navbar navbar-light">
           <ul className="flex border-b border-gray-500 mb-2">
-            <Tab onClick={() => setActiveTab('#/setup')} active={activeTab === '#/setup'}>
-              <Link to="/setup">Setup</Link>
-            </Tab>
-            <Tab onClick={() => setActiveTab('#/')} active={activeTab === '#/'}>
-              <Link to="/">Play</Link>
-            </Tab>
-            <Tab onClick={() => setActiveTab('#/about')} active={activeTab === '#/about'}>
-              <Link to="/about">About</Link>
-            </Tab>
+            <Link to="/setup">
+              <Tab onClick={() => setActiveTab('#/setup')} active={activeTab === '#/setup'}>
+                Setup
+              </Tab>
+            </Link>
+            <Link to="/">
+              <Tab onClick={() => setActiveTab('#/')} active={activeTab === '#/'}>
+                Play
+              </Tab>
+            </Link>
+            <Link to="/about">
+              <Tab onClick={() => setActiveTab('#/about')} active={activeTab === '#/about'}>
+                About
+              </Tab>
+            </Link>
           </ul>
         </nav>
         <Route path="/about" component={About} />
