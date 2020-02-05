@@ -24,8 +24,8 @@ function App() {
   const [activeTab, setActiveTab] = useState(window.location.hash);
 
   return (
-    <div className="App bg-gray-100 px-6 h-screen">
-      <header className="py-6 max-w-xl mx-auto">
+    <div className="App bg-gray-100 h-screen">
+      <header className="p-6 max-w-xl mx-auto">
         <nav className="navbar navbar-light">
           <ul className="flex border-b border-gray-500 mb-2">
             <Link to="/setup">
