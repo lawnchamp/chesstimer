@@ -15,9 +15,11 @@ function ClockDisplay({ isTicking, time, toggleTicker }) {
   const timerStyles = isTicking ? 'text-gray-700' : 'text-gray-300';
 
   return (
-    <div
-      onClick={() => isTicking && time > 0 && toggleTicker()}
-      className={`relative rounded-lg h-half flex justify-center items-center ${containerStyles}`}
+    <div className="relative flex justify-center items-center">
+      <button
+        disabled={!isTicking || time <= 0}
+        onClick={toggleTicker}
+        className={`rounded-lg h-half w-full ${containerStyles}`}
     >
       <svg
         className={`${timerStyles} h-8 w-8 hover:text-black absolute top-0 right-0 m-2`}
@@ -31,6 +33,7 @@ function ClockDisplay({ isTicking, time, toggleTicker }) {
       <div className={`text-8xl ${timerStyles}`} style={{ transform: `rotate(${rotation}deg)` }}>
         {minutes}:{seconds}
       </div>
+      </button>
     </div>
   );
 }
@@ -50,11 +53,13 @@ function Clock({ isTicking, toggleTicker }) {
 
 function PauseButton({ toggle, text }) {
   return (
-    <div
+    <div className="text-center">
+      <button
       onClick={toggle}
-      className="text-center my-4 uppercase tracking-wider font-semibold text-sm text-gray-700"
+        className="my-4 uppercase tracking-wider font-semibold text-sm text-gray-700"
     >
       {text}
+      </button>
     </div>
   );
 }
