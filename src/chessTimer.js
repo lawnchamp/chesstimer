@@ -19,9 +19,7 @@ function ClockDisplay({ isTicking, time, toggleTicker }) {
       <button
         disabled={!isTicking || time <= 0}
         onClick={toggleTicker}
-        className={`rounded-lg h-half w-full ${containerStyles}`}
-    >
-      <svg
+        className={`rounded-lg h-half w-full focus:outline-none ${containerStyles}`}
         className={`${timerStyles} h-8 w-8 hover:text-black absolute top-0 right-0 m-2`}
         onClick={onRotationClicked}
         fill="currentColor"
