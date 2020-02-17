@@ -5,11 +5,11 @@ import { ChessTimer } from './chessTimer';
 
 function Tab({ active, children, onClick }) {
   const activeClasses = active
-    ? 'border-gray-500 bg-gray-100 border-l border-t border-r text-blue-700'
-    : 'bg-gray-300 text-blue-500 hover:text-blue-800';
+    ? 'border-gray-500 bg-gray-100 border-l border-t border-r text-blue-800'
+    : 'text-blue-500 hover:text-blue-800';
   return (
     <li className={`mr-1 ${active ? '-mb-px' : ''}`} onClick={onClick}>
-      <div className={`inline-block rounded-t py-2 px-4 font-semibold ${activeClasses}`}>
+      <div className={`inline-block rounded-t py-2 px-4 font-medium ${activeClasses}`}>
         {children}
       </div>
     </li>
@@ -45,9 +45,9 @@ function App() {
             </Link>
           </ul>
         </nav>
-        <Route path="/about" component={About} />
         <Route path="/setup" component={Setup} />
         <Route exact={true} path="/" component={ChessTimer} />
+        <Route path="/about" component={About} />
       </header>
     </div>
   );
