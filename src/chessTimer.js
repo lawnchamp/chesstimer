@@ -51,14 +51,18 @@ function Clock({ isTicking, toggleTicker }) {
   return <ClockDisplay time={time} isTicking={isTicking} toggleTicker={toggleTicker} />;
 }
 
-function PauseButton({ toggle, text }) {
+export function PauseButton({ toggle, paused }) {
+  const buttonStyles = paused
+    ? 'text-white bg-teal-800 hover:bg-teal-600'
+    : 'text-gray-700 border hover:bg-gray-200';
+
   return (
     <div className="text-center">
       <button
-      onClick={toggle}
-        className="my-4 uppercase tracking-wider font-semibold text-sm text-gray-700"
-    >
-      {text}
+        onClick={toggle}
+        className={`${buttonStyles} my-4 w-24 py-2 uppercase tracking-wider font-semibold text-sm rounded-full focus:outline-none focus:shadow-outline `}
+      >
+        {paused ? 'play' : 'pause'}
       </button>
     </div>
   );
