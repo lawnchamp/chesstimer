@@ -68,7 +68,7 @@ export function PauseButton({ toggle, paused }) {
 }
 
 export function ChessTimer() {
-  const [isTicking, setIsTicking] = useState(true);
+  const [isTicking, setIsTicking] = useState(false);
   const [paused, setPaused] = useState(true);
 
   return (
