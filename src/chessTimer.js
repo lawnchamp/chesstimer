@@ -1,6 +1,6 @@
 import React, { useState, Fragment, useEffect } from 'react';
 
-function ClockDisplay({ isTicking, time, toggleTicker }) {
+export function ClockDisplay({ isTicking, time, toggleTicker }) {
   const [rotation, setRotation] = useState(0);
 
   function onRotationClicked(event) {
