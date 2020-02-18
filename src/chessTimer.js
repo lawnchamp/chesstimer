@@ -37,8 +37,8 @@ function ClockDisplay({ isTicking, time, toggleTicker }) {
   );
 }
 
-function Clock({ isTicking, toggleTicker }) {
-  const [time, setTime] = useState(600);
+function Clock({ isTicking, toggleTicker, startTime = 600 }) {
+  const [time, setTime] = useState(startTime);
 
   useEffect(() => {
     if (isTicking && time > 0) {
@@ -74,7 +74,7 @@ export function ChessTimer() {
   return (
     <Fragment>
       <Clock isTicking={isTicking && !paused} toggleTicker={() => setIsTicking(!isTicking)} />
-      <PauseButton toggle={() => setPaused(!paused)} text={paused ? 'play' : 'pause'} />
+      <PauseButton toggle={() => setPaused(!paused)} paused={paused} />
       <Clock isTicking={!isTicking && !paused} toggleTicker={() => setIsTicking(!isTicking)} />
     </Fragment>
   );
