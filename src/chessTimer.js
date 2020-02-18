@@ -20,17 +20,18 @@ function ClockDisplay({ isTicking, time, toggleTicker }) {
         disabled={!isTicking || time <= 0}
         onClick={toggleTicker}
         className={`rounded-lg h-half w-full focus:outline-none ${containerStyles}`}
-        className={`${timerStyles} h-8 w-8 hover:text-black absolute top-0 right-0 m-2`}
-        onClick={onRotationClicked}
-        fill="currentColor"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 20 20"
       >
-        <path d="M15 17v-2.99A4 4 0 0 0 11 10H8v5L2 9l6-6v5h3a6 6 0 0 1 6 6v3h-2z" />
-      </svg>
-      <div className={`text-8xl ${timerStyles}`} style={{ transform: `rotate(${rotation}deg)` }}>
-        {minutes}:{seconds}
-      </div>
+        <svg
+          className={`${timerStyles} h-8 w-8 fill-current hover:text-gray-900 absolute top-0 right-0 m-2`}
+          onClick={onRotationClicked}
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
+        >
+          <path d="M15 17v-2.99A4 4 0 0 0 11 10H8v5L2 9l6-6v5h3a6 6 0 0 1 6 6v3h-2z" />
+        </svg>
+        <div className={`text-8xl ${timerStyles}`} style={{ transform: `rotate(${rotation}deg)` }}>
+          {minutes}:{seconds}
+        </div>
       </button>
     </div>
   );

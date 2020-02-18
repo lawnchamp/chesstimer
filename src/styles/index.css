@@ -11,3 +11,7 @@
 .h-half {
   height: 40vh;
 }
+
+button:disabled {
+  cursor: not-allowed;
+}
