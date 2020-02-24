@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState } from 'react';
 import { Link, Route } from 'react-router-dom';
 import { About } from './about';
 import { ChessTimer } from './chessTimer';
@@ -21,7 +21,7 @@ function Tabs() {
   const [activeTab, setActiveTab] = useState(window.location.hash);
 
   return (
-    <Fragment>
+    <nav className="navbar navbar-light">
       <ul className="flex border-b border-gray-500 mb-2">
         <Link to="/setup">
           <Tab onClick={() => setActiveTab('#/setup')} active={activeTab === '#/setup'}>
@@ -42,7 +42,7 @@ function Tabs() {
       <Route path="/setup" component={Setup} />
       <Route exact={true} path="/" component={ChessTimer} />
       <Route path="/about" component={About} />
-    </Fragment>
+    </nav>
   );
 }
 
@@ -54,9 +54,7 @@ function App() {
   return (
     <div className="App bg-gray-100 h-screen">
       <header className="p-6 max-w-xl mx-auto">
-        <nav className="navbar navbar-light">
-          <Tabs />
-        </nav>
+        <Tabs />
       </header>
     </div>
   );
