@@ -10,7 +10,7 @@ export function Tab({ active, children, onClick }) {
 
   return (
     <li className={`mr-1 ${active ? '-mb-px' : ''}`} onClick={onClick}>
-      <div className={`inline-block rounded-t py-2 px-4 font-medium ${activeClasses}`}>
+      <div className={`${activeClasses} inline-block rounded-t py-2 px-4 font-medium`}>
         {children}
       </div>
     </li>
