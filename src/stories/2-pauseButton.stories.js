@@ -1,7 +1,7 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
 import { PauseButton } from '../chessTimer';
-import { withKnobs, text, boolean, number } from '@storybook/addon-knobs';
+import { withKnobs, boolean } from '@storybook/addon-knobs';
 import '../styles/tailwind.css';
 
 export default {
