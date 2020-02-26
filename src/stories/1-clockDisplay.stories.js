@@ -11,11 +11,23 @@ export default {
 };
 
 export const Active = () => {
-  return <ClockDisplay time={600} isTicking={true} toggleTicker={action('clock face clicked')} />;
+  return (
+    <ClockDisplay
+      time={90}
+      isTicking={true}
+      toggleTicker={action('clock face clicked')}
+    />
+  );
 };
 
 export const Paused = () => {
-  return <ClockDisplay time={600} isTicking={false} toggleTicker={action('clock face clicked')} />;
+  return (
+    <ClockDisplay
+      time={600}
+      isTicking={false}
+      toggleTicker={action('clock face clicked')}
+    />
+  );
 };
 
 export const VariableTime = () => {
