@@ -5,12 +5,17 @@ import { ChessTimer } from './chessTimer';
 
 export function Tab({ active, children, onClick }) {
   const activeClasses = active
-    ? 'border-gray-500 bg-gray-100 border-l border-t border-r text-blue-800'
+    ? 'text-blue-800 bg-gray-100 border-t border-l border-r border-gray-500'
     : 'text-blue-500 hover:text-blue-800';
 
   return (
-    <li className={`mr-1 ${active ? '-mb-px' : ''}`} onClick={onClick}>
-      <div className={`${activeClasses} inline-block rounded-t py-2 px-4 font-medium`}>
+    <li
+      className={`mr-1 ${active ? '-mb-px' : ''}`}
+      onClick={onClick}
+    >
+      <div
+        className={`${activeClasses} inline-block px-4 py-2 font-medium rounded-t`}
+      >
         {children}
       </div>
     </li>
@@ -22,19 +27,28 @@ function Tabs() {
 
   return (
     <nav className="navbar navbar-light">
-      <ul className="flex border-b border-gray-500 mb-2">
+      <ul className="flex mb-2 border-b border-gray-500">
         <Link to="/setup">
-          <Tab onClick={() => setActiveTab('#/setup')} active={activeTab === '#/setup'}>
+          <Tab
+            onClick={() => setActiveTab('#/setup')}
+            active={activeTab === '#/setup'}
+          >
             Setup
           </Tab>
         </Link>
         <Link to="/">
-          <Tab onClick={() => setActiveTab('#/')} active={activeTab === '#/'}>
+          <Tab
+            onClick={() => setActiveTab('#/')}
+            active={activeTab === '#/'}
+          >
             Play
           </Tab>
         </Link>
         <Link to="/about">
-          <Tab onClick={() => setActiveTab('#/about')} active={activeTab === '#/about'}>
+          <Tab
+            onClick={() => setActiveTab('#/about')}
+            active={activeTab === '#/about'}
+          >
             About
           </Tab>
         </Link>
@@ -47,13 +61,17 @@ function Tabs() {
 }
 
 function Setup() {
-  return <h2 className="my-2 font-semibold text-2xl text-gray-700">Coming soon!</h2>;
+  return (
+    <h2 className="my-2 text-2xl font-semibold text-gray-700">
+      Coming soon!
+    </h2>
+  );
 }
 
 function App() {
   return (
-    <div className="App bg-gray-100 h-screen">
-      <header className="p-6 max-w-xl mx-auto">
+    <div className="h-screen bg-gray-100 App">
+      <header className="max-w-xl p-6 mx-auto">
         <Tabs />
       </header>
     </div>

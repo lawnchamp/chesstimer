@@ -10,8 +10,23 @@ export default {
   decorators: [withKnobs],
 };
 
-export const GameIsPaused = () => <PauseButton toggle={action('button clicked')} paused={true} />;
-export const GameIsPlaying = () => <PauseButton toggle={action('button clicked')} paused={false} />;
-export const VariableState = () => (
-  <PauseButton toggle={action('button clicked')} paused={boolean('paused', true)} />
-);
+export function GameIsPaused() {
+  return (
+    <PauseButton toggle={action('button clicked')} isPaused={true} />
+  );
+}
+
+export function GameIsPlaying() {
+  return (
+    <PauseButton toggle={action('button clicked')} isPaused={false} />
+  );
+}
+
+export function VariableState() {
+  return (
+    <PauseButton
+      toggle={action('button clicked')}
+      isPaused={boolean('isPaused', true)}
+    />
+  );
+}

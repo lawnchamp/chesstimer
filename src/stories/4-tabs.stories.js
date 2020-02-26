@@ -11,7 +11,7 @@ export default {
 
 export const HardCodedTabs = () => {
   return (
-    <ul className="flex border-b border-gray-500 mb-2">
+    <ul className="flex mb-2 border-b border-gray-500">
       <Tab onClick={action('tab 1 clicked')} active={false}>
         Setup
       </Tab>
@@ -24,11 +24,11 @@ export const HardCodedTabs = () => {
         About
       </Tab>
 
-      <Tab onClick={action('tab 3 clicked')} active={false}>
+      <Tab onClick={action('tab 4 clicked')} active={false}>
         Contact Us
       </Tab>
 
-      <Tab onClick={action('tab 3 clicked')} active={false}>
+      <Tab onClick={action('tab 5 clicked')} active={false}>
         Pricing
       </Tab>
     </ul>
@@ -39,7 +39,7 @@ export const ReactiveTabs = () => {
   const [activeTab, setActiveTab] = useState(2);
 
   return (
-    <ul className="flex border-b border-gray-500 mb-2">
+    <ul className="flex mb-2 border-b border-gray-500">
       <Tab onClick={() => setActiveTab(1)} active={activeTab === 1}>
         Setup
       </Tab>

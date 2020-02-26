@@ -11,25 +11,32 @@ export function ClockDisplay({ isTicking, time, toggleTicker }) {
   const minutes = Math.floor(time / 60);
   const seconds = (time % 60).toString().padStart(2, '0');
 
-  const containerStyles = isTicking ? 'shadow-2xl bg-gray-300 border border-gray-700' : 'bg-white';
-  const timerStyles = isTicking ? 'text-gray-700' : 'text-gray-300 border border-white';
+  const containerStyles = isTicking
+    ? 'bg-gray-300 border border-gray-700 shadow-2xl'
+    : 'bg-white';
+  const timerStyles = isTicking
+    ? 'text-gray-700'
+    : 'text-gray-300 border border-white';
 
   return (
-    <div className="relative flex justify-center items-center">
+    <div className="relative flex items-center justify-center">
       <button
         disabled={!isTicking || time <= 0}
         onClick={toggleTicker}
-        className={`${containerStyles} rounded-lg h-half w-full focus:outline-none`}
+        className={`${containerStyles} w-full rounded-lg h-half focus:outline-none`}
       >
         <svg
-          className={`${timerStyles} h-8 w-8 fill-current hover:text-gray-900 absolute top-0 right-0 m-2`}
+          className={`${timerStyles} absolute top-0 right-0 w-8 h-8 m-2 fill-current hover:text-gray-900`}
           onClick={onRotationClicked}
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
         >
           <path d="M15 17v-2.99A4 4 0 0 0 11 10H8v5L2 9l6-6v5h3a6 6 0 0 1 6 6v3h-2z" />
         </svg>
-        <div className={`${timerStyles} text-8xl`} style={{ transform: `rotate(${rotation}deg)` }}>
+        <div
+          className={`${timerStyles} text-8xl`}
+          style={{ transform: `rotate(${rotation}deg)` }}
+        >
           {minutes}:{seconds}
         </div>
       </button>
@@ -47,7 +54,13 @@ function Clock({ isTicking, toggleTicker, startTime = 600 }) {
     }
   });
 
-  return <ClockDisplay time={time} isTicking={isTicking} toggleTicker={toggleTicker} />;
+  return (
+    <ClockDisplay
+      time={time}
+      isTicking={isTicking}
+      toggleTicker={toggleTicker}
+    />
+  );
 }
 
 export function PauseButton({ toggle, isPaused }) {
@@ -59,7 +72,7 @@ export function PauseButton({ toggle, isPaused }) {
     <div className="text-center">
       <button
         onClick={toggle}
-        className={`${buttonStyles} my-4 w-24 py-2 uppercase tracking-wider font-semibold text-sm rounded-full focus:outline-none focus:shadow-outline`}
+        className={`${buttonStyles} w-24 py-2 my-4 text-sm font-semibold tracking-wider uppercase rounded-full focus:outline-none focus:shadow-outline`}
       >
         {isPaused ? 'play' : 'pause'}
       </button>
@@ -68,19 +81,28 @@ export function PauseButton({ toggle, isPaused }) {
 }
 
 export function ChessTimer() {
-  const [firstClockIsTicking, setFirstClockIsTicking] = useState(true);
+  const [firstClockIsTicking, setFirstClockIsTicking] = useState(
+    true
+  );
   const [gameIsPaused, setGameIsPaused] = useState(true);
 
   return (
     <Fragment>
       <Clock
         isTicking={firstClockIsTicking && !gameIsPaused}
-        toggleTicker={() => setFirstClockIsTicking(!firstClockIsTicking)}
+        toggleTicker={() =>
+          setFirstClockIsTicking(!firstClockIsTicking)
+        }
       />
-      <PauseButton toggle={() => setGameIsPaused(!gameIsPaused)} isPaused={gameIsPaused} />
+      <PauseButton
+        toggle={() => setGameIsPaused(!gameIsPaused)}
+        isPaused={gameIsPaused}
+      />
       <Clock
         isTicking={!firstClockIsTicking && !gameIsPaused}
-        toggleTicker={() => setFirstClockIsTicking(!firstClockIsTicking)}
+        toggleTicker={() =>
+          setFirstClockIsTicking(!firstClockIsTicking)
+        }
       />
     </Fragment>
   );
