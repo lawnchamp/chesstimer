@@ -19,7 +19,7 @@ export function ClockDisplay({ isTicking, time, toggleTicker }) {
     : 'text-gray-300 border border-white';
 
   return (
-    <div className="relative flex items-center justify-center">
+    <div className="relative">
       <button
         disabled={!isTicking || time <= 0}
         onClick={toggleTicker}
