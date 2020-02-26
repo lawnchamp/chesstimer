@@ -5,11 +5,9 @@ export function ClockDisplay({ isTicking, time, toggleTicker }) {
   const timerStyles = isTicking ? '' : '';
 
   return (
-    <div className="">
-      <button className={`${containerStyles} w-full`}>
-        <div className={`${timerStyles}`}>10:00</div>
-      </button>
-    </div>
+    <button>
+      <div>10:00</div>
+    </button>
   );
 }
 
@@ -24,11 +22,18 @@ function Clock({ isTicking, toggleTicker, startTime }) {
 }
 
 export function PauseButton({ toggle, isPaused }) {
-  const buttonStyles = isPaused ? '' : '';
+  const buttonStyles = isPaused
+    ? 'text-white bg-teal-800 hover:bg-teal-600'
+    : 'text-gray-700 border hover:bg-gray-200';
 
   return (
     <div className="text-center">
-      <button className={`${buttonStyles}`}>play</button>
+      <button
+        onClick={toggle}
+        className={`${buttonStyles} w-24 py-2 my-4 text-sm font-semibold tracking-wider uppercase rounded-full focus:outline-none focus:shadow-outline`}
+      >
+        {isPaused ? 'play' : 'pause'}
+      </button>
     </div>
   );
 }
