@@ -1,13 +1,24 @@
 import React, { useState, Fragment, useEffect } from 'react';
 
 export function ClockDisplay({ isTicking, time, toggleTicker }) {
-  const containerStyles = isTicking ? '' : '';
-  const timerStyles = isTicking ? '' : '';
+  const minutes = Math.floor(time / 60);
+  const seconds = (time % 60).toString().padStart(2, '0');
+
+  const containerStyles = isTicking
+    ? 'bg-gray-300 border border-gray-700 shadow-2xl'
+    : 'bg-white border border-white';
+  const timerStyles = isTicking ? 'text-gray-700' : 'text-gray-300';
 
   return (
-    <div className="">
-      <button className={`${containerStyles} w-full`}>
-        <div className={`${timerStyles}`}>10:00</div>
+    <div className="relative">
+      <button
+        disabled={!isTicking || time <= 0}
+        onClick={toggleTicker}
+        className={`${containerStyles} w-full rounded-lg h-half`}
+      >
+        <div className={`${timerStyles} text-8xl`}>
+          {minutes}:{seconds}
+        </div>
       </button>
     </div>
   );
