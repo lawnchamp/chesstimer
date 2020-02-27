@@ -13,7 +13,7 @@ export function ClockDisplay({ isTicking, time, toggleTicker }) {
 
   const containerStyles = isTicking
     ? 'bg-gray-300 border border-gray-700 shadow-2xl'
-    : 'bg-white';
+    : 'bg-white border';
   const timerStyles = isTicking
     ? 'text-gray-700'
     : 'text-gray-300 border border-white';
