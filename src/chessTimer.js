@@ -6,11 +6,11 @@ export function ClockDisplay({ isTicking, time, toggleTicker }) {
 
   const containerStyles = isTicking
     ? 'bg-gray-300 border border-gray-700 shadow-2xl'
-    : 'bg-white border border-white';
+    : 'bg-white border';
   const timerStyles = isTicking ? 'text-gray-700' : 'text-gray-300';
 
   return (
-    <div className="">
+    <div className="relative">
       <button
         disabled={!isTicking || time <= 0}
         onClick={toggleTicker}
