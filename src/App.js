@@ -70,7 +70,7 @@ function Setup() {
 
 function App() {
   return (
-    <div className="h-screen bg-gray-100 App">
+    <div className="App h-screen bg-gray-100 antialiased">
       <header className="max-w-xl p-6 mx-auto">
         <Tabs />
       </header>
