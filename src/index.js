@@ -1,15 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import './styles/tailwind.css';
+import App from './App/App';
 import * as serviceWorker from './serviceWorker';
-
-import { HashRouter } from 'react-router-dom';
+// import { HashRouter } from 'react-router-dom';
 
 ReactDOM.render(
-  <HashRouter>
+  <React.StrictMode>
+    {/* <HashRouter> */}
     <App />
-  </HashRouter>,
+    {/* </HashRouter> */}
+  </React.StrictMode>,
   document.getElementById('root'),
 );
 

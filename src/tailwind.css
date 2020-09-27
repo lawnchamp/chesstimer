@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.text-8xl {
+  font-size: 6rem;
+}
+
+.h-half {
+  height: 40vh;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
